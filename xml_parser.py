@@ -1,8 +1,8 @@
 import xml.etree.ElementTree as ET
 
-xml_file = "data\philosophy\meta\Badges.xml"
-tree = ET.parse(xml_file)
+tree = ET.parse('netflix_data.xml')
 
 root = tree.getroot()
 for child in root:
-    print(child.attrib)
+    for attr in range(len(child)):
+        print(f"{child[attr].tag}: {child[attr].text}")
