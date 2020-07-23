@@ -9,12 +9,5 @@ spark = pyspark.sql.SparkSession \
     .getOrCreate()
 netflix_data = spark.read.csv('netflix_data.csv', header=True).rdd
 desc = netflix_data.map(lambda x: x[5])
-print(desc.take)
-
-
-""" words = desc.flatMap(lambda line: line.split(' '))
-word_count = words.map(lambda word: (word, 1)).reduceByKey(add)
-output = word_count.collect()
-with open('output.txt', 'w') as f:
-    for word, count in output:
-        f.write(f"{word} : {count}\n") """
+# print(desc)
+desc.saveAsTextFile('descriptions.txt')
