@@ -1,7 +1,6 @@
 import pyspark
 from operator import add
 
-sc = pyspark.SparkContext('local[*]')
 spark = pyspark.sql.SparkSession \
     .builder \
     .appName("TestApp") \
