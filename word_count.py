@@ -4,10 +4,11 @@ from operator import add
 
 def word_cleaner(word: str) -> str:
     new_word = word
-    for char in (',', '.', ':', '"', "'"):
-        if char in new_word:
-            new_word = new_word.replace(char, '')
-    return new_word
+    spl_chars = set([',', '.', ':', '"', "'", '”', '“', ')', '(', '?', '…'])
+    word_chars = set(new_word)
+    for char in word_chars.intersection(spl_chars):
+        new_word = new_word.replace(char, '')
+    return new_word.lower()
 
 
 spark = pyspark.sql.SparkSession \
